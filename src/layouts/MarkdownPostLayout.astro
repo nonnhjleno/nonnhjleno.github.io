@@ -6,7 +6,11 @@ const { frontmatter } = Astro.props;
 
 <BaseLayout pageTitle={frontmatter.title}>
   <p>投稿日:{frontmatter.pubDate.toString().slice(0, 10)}</p>
-  <p>最終投稿日:{frontmatter.lastDate.toString().slice(0, 10)}</p>
+  {
+    frontmatter.lastDate && (
+      <p>最終投稿日: {frontmatter.lastDate.toString().slice(0, 10)}</p>
+    )
+  }
   <p style="color: rgb(97, 97, 97);"><em>{frontmatter.description}</em></p>
   <p>著者: {frontmatter.author}</p>
   <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
@@ -47,8 +51,7 @@ const { frontmatter } = Astro.props;
         if (text.slice(7, -3).startsWith(" warn")) {
           div.classList.add("warn");
           cleanedText = text.slice(12, -3);
-        }
-        else if (text.slice(7, -3).startsWith(" alert")) {
+        } else if (text.slice(7, -3).startsWith(" alert")) {
           div.classList.add("alert");
           cleanedText = text.slice(13, -3);
         } else {
@@ -56,7 +59,7 @@ const { frontmatter } = Astro.props;
           cleanedText = text.slice(12, -3);
         }
         cleanedText = cleanedText.replace(/\n/g, "<br>");
-        cleanedText = cleanedText.replace(/^<br>/, '');
+        cleanedText = cleanedText.replace(/^<br>/, "");
         div.innerHTML = cleanedText;
 
         paragraph.replaceWith(div);
