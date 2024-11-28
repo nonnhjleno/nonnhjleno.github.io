@@ -7,11 +7,13 @@
 @font-face {
   font-family: 'BIZUDG';
   src: url('/fonts/BIZUDGothic-Bold.ttf') format('truetype');
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Roboto';
   src: url('/fonts/Roboto-Bold.ttf') format('truetype');
+  font-display: swap;
 }
 
 
