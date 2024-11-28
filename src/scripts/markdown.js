@@ -2,7 +2,7 @@ const markdownjs = () => {
   if (document.querySelector("#map")) {
     if (document.querySelector("#map").querySelector("iframe")) {
       document.querySelector("#map").querySelector("iframe").style.width = "100%";
-      document.querySelector("#map").querySelector("iframe").setAttribute("title","Google Map");
+      document.querySelector("#map").querySelector("iframe").setAttribute("title", "Google Map");
     }
   }
 
@@ -88,36 +88,38 @@ markdownjs();
 
 import { marked } from "https://cdn.jsdelivr.net/npm/marked@4.3.0/lib/marked.esm.js";
 
-document.getElementById("readFile").addEventListener("click", () => {
-  const fileInput = document.getElementById("fileInput");
-  const markdown = document.getElementById("markdown");
+if (document.getElementById("readFile")) {
+  document.getElementById("readFile").addEventListener("click", () => {
+    const fileInput = document.getElementById("fileInput");
+    const markdown = document.getElementById("markdown");
 
-  if (fileInput.files.length === 0) {
-    alert("ファイルを選択してください");
-    return;
-  }
+    if (fileInput.files.length === 0) {
+      alert("ファイルを選択してください");
+      return;
+    }
 
-  const file = fileInput.files[0];
+    const file = fileInput.files[0];
 
-  if (file.type !== "text/markdown" && !file.name.endsWith(".md")) {
-    alert("Markdownファイルを選択してください");
-    return;
-  }
+    if (file.type !== "text/markdown" && !file.name.endsWith(".md")) {
+      alert("Markdownファイルを選択してください");
+      return;
+    }
 
-  const reader = new FileReader();
-  reader.onload = function (e) {
-    const markdownContent = e.target.result;
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const markdownContent = e.target.result;
 
-    // MarkdownをHTMLに変換
-    const htmlContent = marked.parse(markdownContent);
+      // MarkdownをHTMLに変換
+      const htmlContent = marked.parse(markdownContent);
 
-    // 安全にレンダリングするためinnerHTMLを使用
-    markdown.innerHTML = htmlContent;
-    sessionStorage.setItem('contentData', markdownContent);
-    console.log(markdownContent);
-  };
+      // 安全にレンダリングするためinnerHTMLを使用
+      markdown.innerHTML = htmlContent;
+      sessionStorage.setItem('contentData', markdownContent);
+      console.log(markdownContent);
+    };
 
-  reader.readAsText(file);
+    reader.readAsText(file);
 
-  setTimeout(markdownjs,1000);
-});
+    setTimeout(markdownjs, 1000);
+  });
+}
