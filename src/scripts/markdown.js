@@ -2,6 +2,7 @@ const markdownjs = () => {
   if (document.querySelector("#map")) {
     if (document.querySelector("#map").querySelector("iframe")) {
       document.querySelector("#map").querySelector("iframe").style.width = "100%";
+      document.querySelector("#map").querySelector("iframe").setAttribute("title","Google Map");
     }
   }
 
