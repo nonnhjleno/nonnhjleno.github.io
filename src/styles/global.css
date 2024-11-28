@@ -1,7 +1,19 @@
 :root{
-  --theme-background: #ff8a65;
-  --theme-strong:#ff7043;
+  --theme-background: #fcdfa2;
+  --theme-strong:#facd6e;
+  --theme-text-color: #410715;
 }
+
+@font-face {
+  font-family: 'BIZUDG';
+  src: url('/public/fonts/BIZUDGothic-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/public/fonts/Roboto-Bold.ttf') format('truetype');
+}
+
 
 .blog-link a{
   background-color: var(--theme-strong);
@@ -19,6 +31,24 @@ header{
   background-color: var(--theme-background);
 }
 
+.author{
+  font-size: 20px;
+  color: rgb(86, 86, 86);
+  text-decoration: none;
+  font-weight: bold;
+  margin-right: 20px; 
+}
+.author:hover {
+  color: var(--theme-text-color);
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--theme-text-color);
+}
+
 html {
   background-color: #fdfdfd;
   font-family: sans-serif;
@@ -34,9 +64,11 @@ main {
 }
 
 * {
+  font-family: 'Roboto','BIZUDG';
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: var(--theme-text-color);
 }
 
 h1 {
@@ -58,7 +90,6 @@ footer>div {
 }
 
 .footer-link {
-  color: #252A34;
   border-radius: 10px;
   padding: 0.5rem 1.2rem;
   text-decoration: none;

@@ -25,20 +25,11 @@ const authors = authorsCollection.filter((author) =>
   #authors {
     margin-top: 20px;
   }
-  .author{
-    font-size: 20px;
-    color: gray;
-    text-decoration: none;
-    font-weight: bold;
-    margin-right: 20px; 
-  }
-  .author:hover {
-    color: black;
-  }
-  .pin{
+
+  .pin {
     display: flex;
   }
-  .pin img{
+  .pin img {
     width: 20px;
     height: 20px;
     margin-right: 10px;
@@ -61,15 +52,27 @@ const authors = authorsCollection.filter((author) =>
     color: rgb(24, 166, 255);
     text-decoration: none;
   }
+  .tag a:hover {
+    text-decoration: underline;
+  }
 </style>
 <h1>{data.title}</h1>
 <p>{formattedDate}</p>
-{data.storeName && <div class="pin"><Image src="/images/pin.png" alt={"pin"} width="2" height="2"/>{data.storeName}</div>}
+{
+  data.storeName && (
+    <div class="pin">
+      <Image src="/images/pin.png" alt={"pin"} width="2" height="2" />
+      {data.storeName}
+    </div>
+  )
+}
 {data.lastDate && <p>更新: {data.lastDate.toString().slice(0, 10)}</p>}
 <p id="authors">
   {
     authors.map((author) => (
-      <a class="author" href={`/author/${author.id}`}>{author.data.name}</a>
+      <a class="author" href={`/author/${author.id}`}>
+        {author.data.name}
+      </a>
     ))
   }
 </p>
