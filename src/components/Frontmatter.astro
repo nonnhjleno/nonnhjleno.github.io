@@ -49,7 +49,7 @@ const authors = authorsCollection.filter((author) =>
   }
   .tag a {
     font-weight: bold;
-    color: rgb(24, 166, 255);
+    color: #005BEC;
     text-decoration: none;
   }
   .tag a:hover {
@@ -61,7 +61,7 @@ const authors = authorsCollection.filter((author) =>
 {
   data.storeName && (
     <div class="pin">
-      <Image src="/images/pin.png" alt={"pin"} width="2" height="2" />
+      <Image src="/images/pin.png" alt={"pin"} width="1" height="1"/>
       {data.storeName}
     </div>
   )
@@ -87,6 +87,6 @@ const authors = authorsCollection.filter((author) =>
   }
 </ul>
 <div id="imageContainer">
-  <Image src={data.thumbnail.url} width="1080" alt={data.thumbnail.alt} />
+  <Image loading="eager" quality="high" src={data.thumbnail.url} width="1080" alt={data.thumbnail.alt} />
 </div>
 {data.map && <div id="map" set:html={data.map} />}
