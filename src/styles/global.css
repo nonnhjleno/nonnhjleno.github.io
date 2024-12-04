@@ -78,6 +78,44 @@ h1 {
   font-size: 1.8rem;
 }
 
+/*       toc       */
+
+.toc {
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+.toc h2 {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+}
+.toc button {
+  all: unset;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #007acc;
+  background: none;
+}
+.toc button:hover {
+  text-decoration: underline;
+}
+.toc ul {
+  list-style: none;
+  padding-left: 0;
+}
+.toc li {
+  margin: 0.5rem 0;
+}
+.toc a {
+  text-decoration: none;
+  color: #007acc;
+}
+.toc a:hover {
+  text-decoration: underline;
+}
+
 /* フッターのスタイル */
 
 footer {

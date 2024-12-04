@@ -2,9 +2,9 @@
 import BaseLayout from "./BaseLayout.astro";
 import "../styles/markdown.css";
 import Frontmatter from "../components/Frontmatter.astro";
-const { entry } = Astro.props;
+import TableOfContents from "../components/TableOfContents.astro";
+const { entry, headings } = Astro.props;
 const data = entry.data;
-
 ---
 
 <style>
@@ -22,6 +22,7 @@ const data = entry.data;
 <BaseLayout pageTitle={data.title}>
   <div id="blogContainer">
     <Frontmatter data={data}/>
+    <TableOfContents headings={headings}/>
     <div id="markdown">
       <slot />
     </div>

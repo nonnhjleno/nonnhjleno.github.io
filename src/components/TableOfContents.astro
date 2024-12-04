@@ -1,0 +1,32 @@
+---
+const { headings } = Astro.props;
+console.log(headings);
+---
+
+<nav class="toc">
+  <h2>
+    <button id="toggle-toc">目次 ▼</button>
+  </h2>
+  <ul id="toc-list" style="display: none;">
+    {
+      headings.map((heading) => (
+        <li style={`margin-left: ${(heading.depth - 2) * 20}px;`}>
+          <a href={`#${heading.slug}`}>{heading.text}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleButton = document.getElementById("toggle-toc");
+    const tocList = document.getElementById("toc-list");
+
+    toggleButton.addEventListener("click", () => {
+      const isHidden = tocList.style.display === "none";
+      tocList.style.display = isHidden ? "block" : "none";
+      toggleButton.textContent = isHidden ? "目次 ▲" : "目次 ▼";
+    });
+  });
+</script>
