@@ -1,7 +1,8 @@
-:root{
+:root {
   --theme-background: #fcdfa2;
-  --theme-strong:#facd6e;
+  --theme-strong: #facd6e;
   --theme-text-color: #410715;
+  --link-color: #005BEC;
 }
 
 @font-face {
@@ -17,15 +18,14 @@
 }
 
 
-.blog-link a{
-  background-color: var(--theme-strong);
-}
 
-header{
+
+header {
   background-color: var(--theme-background);
 }
 
-.button, input::file-selector-button {
+.button,
+input::file-selector-button {
   background-color: var(--theme-strong);
 }
 
@@ -33,13 +33,14 @@ header{
   background-color: var(--theme-background);
 }
 
-.author{
+.author {
   font-size: 20px;
   color: rgb(86, 86, 86);
   text-decoration: none;
   font-weight: bold;
-  margin-right: 20px; 
+  margin-right: 20px;
 }
+
 .author:hover {
   color: var(--theme-text-color);
 }
@@ -66,7 +67,7 @@ main {
 }
 
 * {
-  font-family: 'Roboto','BIZUDG';
+  font-family: 'Roboto', 'BIZUDG';
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -78,7 +79,168 @@ h1 {
   font-size: 1.8rem;
 }
 
-/*       toc       */
+/* header */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  position: relative;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  flex: 1;
+}
+
+.logo a {
+  text-decoration: none;
+
+}
+
+.nav {
+  display: flex;
+  margin-right: 60px;
+  font-weight: 600;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+}
+
+.nav-list li {
+  margin-left: 20px;
+}
+
+.nav-list a {
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    margin: 0 auto;
+  }
+
+  .nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+  }
+
+  .nav.active {
+    display: flex;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-list li {
+    margin: 10px 0;
+  }
+
+  .hamburger {
+    display: flex;
+    position: absolute;
+    left: 20px;
+  }
+}
+
+/* トップページ */
+
+#aboutTop {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+#aboutTop #description {
+  margin: 40px 0;
+}
+
+.blog-link {
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.blog-link a {
+  padding: 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  background-color: var(--theme-strong);
+}
+
+/* frontmatter */
+
+#imageContainer {
+  width: 100%;
+}
+
+#blogContainer h1 {
+  font-size: 35px;
+}
+
+#authors {
+  margin-top: 20px;
+}
+
+.pin {
+  display: flex;
+}
+
+.pin img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+#description {
+  margin: 30px 0;
+}
+
+.tags {
+  margin: 20px 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag {
+  list-style: none;
+  margin: 0 5px;
+}
+
+.tag a {
+  font-weight: bold;
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.tag a:hover {
+  text-decoration: underline;
+}
+
+/* toc */
 
 .toc {
   background: #f9f9f9;
@@ -86,34 +248,121 @@ h1 {
   border-radius: 0.5rem;
   margin-bottom: 2rem;
 }
+
 .toc h2 {
   margin-top: 0;
   display: flex;
   align-items: center;
 }
+
 .toc button {
   all: unset;
   cursor: pointer;
   font-size: 1rem;
-  color: #007acc;
+  color: var(--link-color);
   background: none;
 }
+
 .toc button:hover {
   text-decoration: underline;
 }
+
 .toc ul {
   list-style: none;
   padding-left: 0;
 }
+
 .toc li {
   margin: 0.5rem 0;
 }
+
 .toc a {
   text-decoration: none;
-  color: #007acc;
+  color: var(--link-color);
 }
+
 .toc a:hover {
   text-decoration: underline;
+}
+
+/* ライターページ */
+
+ul#authors {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+}
+
+ul#authors a {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+ul#authors li {
+  padding: 5px;
+  display: inline;
+  background: #fff;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  width: 280px;
+  text-align: center;
+  box-sizing: border-box;
+  margin: 8px;
+}
+
+ul#authors li.placeholder {
+  visibility: hidden;
+}
+
+ul#authors li h2 {
+  margin: 10px 0 0;
+  font-size: 1.8em;
+}
+
+ul#authors li p {
+  font-size: 0.7em;
+  font-weight: bold;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  ul#authors a {
+    text-decoration: none;
+    display: block;
+  }
+
+  ul#authors li {
+    width: 250px;
+    padding: 10px 15px;
+  }
+
+  ul#authors li h2 {
+    font-size: 1.3em;
+  }
+
+  ul#authors li p {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 768px) {
+  ul#authors {
+    align-items: center;
+  }
+
+  ul#authors a {
+    margin: 10px;
+  }
+
+  ul#authors li {
+    max-width: 350px;
+  }
 }
 
 /* フッターのスタイル */
